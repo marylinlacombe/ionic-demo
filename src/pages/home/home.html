@@ -4,50 +4,71 @@
   </ion-navbar>
 </ion-header>
 
+
+
 <ion-content padding>
-            <ion-card *ngFor="let hero of heroes" >
 
-            <ion-item>
-              <ion-avatar item-start>
-                <img src="{{hero.cover}}">
-              </ion-avatar>
-              <h2>{{hero.realname}} (alias "{{hero.name}}")</h2>
-              <p>Avec {{hero.movies.length}} films réalisés</p>
-            </ion-item>
+          <!--PaRTIE SEGMENT-->
+          <div padding>
+            <ion-segment [(ngModel)]="editorFilter"> <!--il faut créer la variable côté contrôler-->
+              <ion-segment-button value="Marvel">
+                MARVEL
+              </ion-segment-button>
+              <ion-segment-button value="DC">
+                DC
+              </ion-segment-button>
+            </ion-segment>
+          </div>
 
-            <img src="{{hero.cover}}">
+          <!--FIN PaRTIE SEGMENT-->
 
-            <ion-card-content>
-              <ul>
-                <ng-container *ngFor="let movie of hero.movies">
-                <li> <!--on est dans une boucle-->
-                      {{  movie.title}} avec la date de sortie
-                       {{movie.date | date:'yyyy'}}
-                       <!--on demande un formatage de la date en français-->
-                </li>
-              </ng-container>
-              </ul>
-            </ion-card-content>
+          <div [ngSwitch]="editorFilter">
+            <ng-container *ngFor="let hero of heroes">
+                  <ion-card  *ngSwitchCase="hero.editor">
 
-            <ion-row>
-              <ion-col>
-                <button ion-button icon-left clear small>
-                  <ion-icon name="thumbs-up"></ion-icon>
-                  <div>12 Likes</div>
-                </button>
-              </ion-col>
-              <ion-col>
-                <button ion-button icon-left clear small>
-                  <ion-icon name="text"></ion-icon>
-                  <div>4 Comments</div>
-                </button>
-              </ion-col>
-              <ion-col center text-center>
-                <ion-note>
-                  11h ago
-                </ion-note>
-              </ion-col>
-            </ion-row>
+                        <ion-item>
+                          <ion-avatar item-start>
+                            <img src="{{hero.cover}}">
+                          </ion-avatar>
+                          <h2>{{hero.realname}} (alias "{{hero.name}}")</h2>
+                          <p>Avec {{hero.movies.length}} films réalisés</p>
+                        </ion-item>
 
-          </ion-card>
+                        <img src="{{hero.cover}}">
+
+                        <ion-card-content>
+                          <ul>
+                            <ng-container *ngFor="let movie of hero.movies">
+                            <li> <!--on est dans une boucle-->
+                                  {{  movie.title}} avec la date de sortie
+                                   {{movie.date | date:'yyyy'}}
+                                   <!--on demande un formatage de la date en français-->
+                            </li>
+                          </ng-container>
+                          </ul>
+                        </ion-card-content>
+
+                        <ion-row>
+                          <ion-col>
+                            <button ion-button icon-left clear small>
+                              <ion-icon name="thumbs-up"></ion-icon>
+                              <div>12 Likes</div>
+                            </button>
+                          </ion-col>
+                          <ion-col>
+                            <button ion-button icon-left clear small>
+                              <ion-icon name="text"></ion-icon>
+                              <div>4 Comments</div>
+                            </button>
+                          </ion-col>
+                          <ion-col center text-center>
+                            <ion-note>
+                              11h ago
+                            </ion-note>
+                          </ion-col>
+                        </ion-row>
+
+                  </ion-card>
+            </ng-container>
+        </div><!--FIN NG-SWITCH-->
 </ion-content>

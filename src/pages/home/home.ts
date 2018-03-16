@@ -6,6 +6,7 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  editorFilter:string = "DC"
   heroes:any = [
         {//DEBUT DU TABLEAU D'OBJET JSON
                 "realname": "Bruce Wayne",
