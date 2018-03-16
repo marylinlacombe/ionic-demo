@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 // import de la fonctionnalité des requetes http:
-import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
 //importation pour pouvoir utiliser les promises:
 import 'rxjs/add/operator/toPromise';
 
