@@ -1,11 +1,22 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      Ma liste de pays
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ng-container>
+    <ion-list>
+        <ion-item *ngFor="let countrie of countries">
+          <ion-avatar item-start>
+            <img src="{{ countrie.flag }}">
+          </ion-avatar>
+          <h2>Nom: {{ countrie.name }}</h2>
+          <p>Capitale: {{ countrie.capital }}</p>
+          <p>Région: {{ countrie.region }}</p>
+        </ion-item>
+    </ion-list>
+</ng-container>
 </ion-content>
